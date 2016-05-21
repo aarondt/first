@@ -1,0 +1,15 @@
+<body>
+<div class="jumbotron">
+<div class="container">
+    
+    <div class="search">
+    <h3>Weine. Günstiger.</h3>
+
+  <%= form_tag weins_path, :method => 'get' do %>
+  <%= text_field_tag :search, params[:search],  class:"form-control", placeholder: "Suchen" %>
+  <%= submit_tag "Suchen", class: "jhp" %>
+  <% end %>
+  </div>
+  <%= link_to "Advanced Search", new_search_path %></div>
+</div>
+</body>

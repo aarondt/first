@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @wein.name %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= image_tag(@wein.image_url, :alt => @wein.image_url, :class => "image_show") %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @wein.price %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @wein.prod_desc %>
+</p>
+
+<p>
+  <strong>Vintage:</strong>
+  <%= @wein.vintage %>
+</p>
+
+<%= link_to 'Edit', edit_wein_path(@wein) %> |
+<%= link_to 'Back', weins_path %>

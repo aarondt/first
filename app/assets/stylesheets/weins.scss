@@ -1,0 +1,72 @@
+// Place all the styles related to the weins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.img_preview {    height: 150px;
+margin: 0 auto;
+            display: block;
+                  
+}
+
+
+
+.prod-pic {    height: 150px;
+                  width: 150px;
+}
+
+//.shop-logo-container{background: grey;
+        //    height: 33px;
+         //   width: 150px;
+            
+//}
+.table {
+margin: 0 auto;
+}
+
+body{
+
+background: #8e9eab; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #8e9eab , #eef2f3); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #8e9eab , #eef2f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        
+.search{
+    text-align: center;
+    width: 250px;
+    margin: 0 auto;
+   // margin-top: 20% !Important;
+}
+.jumbotron{
+        width: 50% !important;
+    margin: 0 auto;
+    border-radius: 33px;
+}
+
+.tr{vertical-align: middle;}
+
+.jhp {
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#f1f1f1));
+    background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
+    -webkit-border-radius: 2px;
+    -webkit-user-select: none;
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 2px;
+    color: #757575;
+    cursor: default;
+    font-family: arial,sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 11px 4px;
+    min-width: 84px;
+    padding: 0 16px;
+    text-align: center;
+        border: grey;
+    border-style: solid;
+    border-width: 1px;
+    height: 50px;
+    width: 150px;
+}
+
+body {
+    padding-top: 0px;
+}
