@@ -29,6 +29,7 @@ gem 'kaminari'
 
 gem 'nokogiri'
 
+
 gem 'mechanize', '~> 2.7', '>= 2.7.4'
 
 group :production do
