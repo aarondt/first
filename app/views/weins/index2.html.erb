@@ -1,0 +1,26 @@
+<div><%= paginate @weins %></div>
+
+
+
+
+<div class="container">
+  <h1 align="center">Listing products</h1>
+
+    <% @weins.each_slice(4) do |products| %>
+          <div class="row">
+            <% products.each do |product| %>
+                <div class="col-lg-3">
+                  <a href=<%= product.source_link %>>
+                  <%= image_tag(product.image_url, class: 'list_image', size: '260x260') %><br/>
+                  <%= product.name %> <br/>
+                  <!--<%= product.price %> <br/>-->
+                  <!--<%= link_to 'Show', product %><br/>-->
+                  </a>
+                </div>
+            <% end %>    
+          </div>
+          <hr/>
+  <% end %>
+</div>
+
+<%= link_to "new", new_wein_path %>
