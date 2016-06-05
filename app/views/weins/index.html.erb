@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="description" content="Tease and Denial Videos only - The largest collection of Tease and Denial Videos, Ckips and Short Movies on the Web.">
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -73,16 +74,16 @@
 
         <div class="row">
 
-            <div class="col-md-3">
-                <p class="lead">Shop Name</p>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
-                </div>
-            </div>
+            <!--<div class="col-md-3">-->
+            <!--    <p class="lead">Shop Name</p>-->
+            <!--    <div class="list-group">-->
+            <!--        <a href="#" class="list-group-item">Category 1</a>-->
+            <!--        <a href="#" class="list-group-item">Category 2</a>-->
+            <!--        <a href="#" class="list-group-item">Category 3</a>-->
+            <!--    </div>-->
+            <!--</div>-->
 
-            <div class="col-md-9">
+            <div class="col-md-12">
 
                
                   <div class="row text-center">
@@ -92,129 +93,33 @@
                 </ul>
             </div>
         </div>
+        
+                     <% @weins.each do |products| %>
+                      <a href=<%= products.source_link %>>
+                          <%end%>
+
              <% @weins.each_slice(4) do |products| %>
                 <div class="row">
                       <% products.each do |product| %>
                     <div class="col-sm-3 col-lg-3 col-md-3">
-                        <a href=<%= product.source_link %>>
+                        <a href=<%= product.source_link %> title="<%= product.name %>">
                         <div class="thumbnail">
-                            <%= image_tag(product.image_url, class: 'list_image', size: '260x260') %>
+                            <%= image_tag(product.image_url, class: 'list_image', size: '260x260', alt: product.name) %>
                             <div class="caption">
                              <!--<h4 class="pull-right">$24.99</h4>-->
-                                <h4><a href="#"> <%= product.name %> </a>
-                                </h4>
-                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                                <p> <%= product.name %>
+                                <p>
                                 </a>
+                                <div class="time"><p><%= product.prod_title %></p></div>
+                                
+                                
                             </div>
-                            <!--<div class="ratings">-->
-                            <!--    <p class="pull-right">15 reviews</p>-->
-                                <!--<p>-->
-                                <!--    <span class="glyphicon glyphicon-star"></span>-->
-                                <!--    <span class="glyphicon glyphicon-star"></span>-->
-                                <!--    <span class="glyphicon glyphicon-star"></span>-->
-                                <!--    <span class="glyphicon glyphicon-star"></span>-->
-                                <!--    <span class="glyphicon glyphicon-star"></span>-->
-                                <!--</p>-->
-                            <!--</div>-->
+                       
                         </div>
                     </div>
                 <%end%>
                   </div>
                     <%end%>
-                    <!--<div class="col-sm-4 col-lg-4 col-md-4">-->
-                    <!--    <div class="thumbnail">-->
-                    <!--        <img src="http://placehold.it/320x150" alt="">-->
-                    <!--        <div class="caption">-->
-                    <!--            <h4 class="pull-right">$64.99</h4>-->
-                    <!--            <h4><a href="#">Second Product</a>-->
-                    <!--            </h4>-->
-                    <!--            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
-                    <!--        </div>-->
-                    <!--        <div class="ratings">-->
-                    <!--            <p class="pull-right">12 reviews</p>-->
-                    <!--            <p>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star-empty"></span>-->
-                    <!--            </p>-->
-                    <!--        </div>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-
-                    <!--<div class="col-sm-4 col-lg-4 col-md-4">-->
-                    <!--    <div class="thumbnail">-->
-                    <!--        <img src="http://placehold.it/320x150" alt="">-->
-                    <!--        <div class="caption">-->
-                    <!--            <h4 class="pull-right">$74.99</h4>-->
-                    <!--            <h4><a href="#">Third Product</a>-->
-                    <!--            </h4>-->
-                    <!--            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
-                    <!--        </div>-->
-                    <!--        <div class="ratings">-->
-                    <!--            <p class="pull-right">31 reviews</p>-->
-                    <!--            <p>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star-empty"></span>-->
-                    <!--            </p>-->
-                    <!--        </div>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-
-                    <!--<div class="col-sm-4 col-lg-4 col-md-4">-->
-                    <!--    <div class="thumbnail">-->
-                    <!--        <img src="http://placehold.it/320x150" alt="">-->
-                    <!--        <div class="caption">-->
-                    <!--            <h4 class="pull-right">$84.99</h4>-->
-                    <!--            <h4><a href="#">Fourth Product</a>-->
-                    <!--            </h4>-->
-                    <!--            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
-                    <!--        </div>-->
-                    <!--        <div class="ratings">-->
-                    <!--            <p class="pull-right">6 reviews</p>-->
-                    <!--            <p>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star-empty"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star-empty"></span>-->
-                    <!--            </p>-->
-                    <!--        </div>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-
-                    <!--<div class="col-sm-4 col-lg-4 col-md-4">-->
-                    <!--    <div class="thumbnail">-->
-                    <!--        <img src="http://placehold.it/320x150" alt="">-->
-                    <!--        <div class="caption">-->
-                    <!--            <h4 class="pull-right">$94.99</h4>-->
-                    <!--            <h4><a href="#">Fifth Product</a>-->
-                    <!--            </h4>-->
-                    <!--            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
-                    <!--        </div>-->
-                    <!--        <div class="ratings">-->
-                    <!--            <p class="pull-right">18 reviews</p>-->
-                    <!--            <p>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star"></span>-->
-                    <!--                <span class="glyphicon glyphicon-star-empty"></span>-->
-                    <!--            </p>-->
-                    <!--        </div>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-
-                    <div class="col-sm-3 col-lg-3 col-md-3">
-                        <h4><a href="#">Like this template?</a>
-                        </h4>
-                        <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
-                        <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
-                    </div>
 
                 </div>
 
@@ -231,11 +136,15 @@
 
         <!-- Footer -->
         <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
+            <p>TeaseandDenials.com has a zero-tolerance policy against illegal pornography. All models on this website are 18 years or older. 
+
+Disclaimer: TeaseandDenials.com is a search engine for adult related videos, it only searches for movies found on porn tube sites. 
+All the content is added by our crawlers, thumbnails are only linked to the corresponding tube site. The indexing process is completely automated. 
+
+We do not own, produce, host or upload any videos displayed on this website, we only link to them. So if you find any content which should be removed, please contact the corresponding tube site. 
+Parents protect your children from adult content with these services: Cyber Patrol, Net Nanny, Cyber Sitter.
+
+Copyright © 2016 TeaseandDenials.com - The Porn Tube Search. All rights reserved.</p>
         </footer>
 
     </div>

@@ -532,7 +532,7 @@ end
 
 
 def crawl_new_wein4
-    @vinello = Shop.find_or_initialize_by(id: 4, shop_name: "Vinello")
+    @vinello = Shop.find_or_initialize_by(id: 4, shop_name: "txxx")
     
     
     vintage = []
@@ -607,12 +607,9 @@ def crawl_new_wein4
         delinero_wein.source_link = source_link[i]
         delinero_wein.price = price[i]
         delinero_wein.prod_mhd = prod_mhd[i]
-        if @vinello.weins.exists?(name: name[i]) 
-         
-            next
-        else
+        
         delinero_wein.save
-        end
+    
     end
 end
 
@@ -709,9 +706,9 @@ end
 
 
 def crawl_new_wein6
-    @vinello = Shop.find_or_initialize_by(id: 6, shop_name: "Nudevista")
+    @vinello = Shop.find_or_initialize_by(id: 6, shop_name: "xxxjojo")
     
-    
+    #83 seiten vorhanden
     vintage = []
     prod_desc = []
     price = []
@@ -724,12 +721,11 @@ def crawl_new_wein6
     image_url = []
      #157 pages in total
     
-   1.times do |d|
+   83.times do |d|
     
         url ="http://www.xxxjojo.com/top-handjob-edging-cum-tease-tubes/page/#{d + 1}/"
         page = Nokogiri::HTML(open(url))
     
-     
         page.xpath('/html/body/main/div[2]/div/div[1]/a').each do |line|  
         
         
@@ -741,9 +737,15 @@ def crawl_new_wein6
         page.xpath('/html/body/main/div[2]/div/div[1]/a/img').each do |line|
           
             
-        name << line['alt']
+        name2 = line['alt']
+        name << name2[0..80].gsub(/\s\w+\s*$/,'...')
         end
         
+        
+        page.css('.duration').each do |line|
+            
+        prod_title << line.text
+        end
         
          
         page.xpath('/html/body/main/div[2]/div/div[1]/a/img').each do |line|
@@ -783,8 +785,9 @@ def crawl_new_wein6
         delinero_wein.name = name[i]
         delinero_wein.image_url = image_url[i]
         delinero_wein.source_link = source_link[i]
+        delinero_wein.prod_title = prod_title[i]
         delinero_wein.price = price[i]
-        delinero_wein.prod_mhd = prod_mhd[i]
+        delinero_wein.prod_title = prod_title[i]
         if @vinello.weins.exists?(name: name[i]) 
          
             next
@@ -796,7 +799,7 @@ end
 
 
 def crawl_new_wein7
-    @vinello = Shop.find_or_initialize_by(id: 6, shop_name: "MarksHead")
+    @mark = Shop.find_or_initialize_by(id: 13, shop_name: "MarksHead")
     
     
     vintage = []
@@ -823,16 +826,24 @@ def crawl_new_wein7
            
            
         end
+        
+        page.css('#nifty a').each do |line|
+         line2 =   line.text[0..80].gsub(/\s\w+\s*$/,'...')
+        name << line2
+        end
        
+       page.css('.sortable-item font').each do |t|
+           prod_title << t.text
+        end
         # page.xpath('//li/a/img').each do |line|
           
             
         # name << line['alt']
         # end
         
-          
-         page.xpath('//*[@id="nifty"]/a/img').each do |line|
-            
+        
+        # page.xpath('//*/li/a/img').each do |line|
+        page.css('li img').each do |line|  
           
         img = line['src']
       # img.gsub!(/,.*/, '')
@@ -875,14 +886,14 @@ def crawl_new_wein7
         
     count.times do |i|
     
-        delinero_wein = @vinello.weins.find_or_initialize_by(source_link: source_link[i])
-        delinero_wein.name = name[i]
-        delinero_wein.image_url = image_url[i]
-        delinero_wein.source_link = "http://95.211.228.117#{source_link[i]}"
-        delinero_wein.price = price[i]
-        delinero_wein.prod_mhd = prod_mhd[i]
+        mark_video = @mark.weins.find_or_initialize_by(source_link: source_link[i])
+        mark_video.name = name[i]
+        mark_video.image_url = image_url[i]
+        mark_video.source_link = "http://95.211.228.117#{source_link[i]}"
+        mark_video.price = price[i]
+        mark_video.prod_title = prod_title[i]
        
-        delinero_wein.save
+       mark_video.save
         
     end
 end
@@ -904,7 +915,7 @@ def crawl_new_wein8
     source_link = []
     image_url = []
      #157 pages in total
-    
+    #23
    23.times do |d|
     
         url ="http://www.pussyspace.com/search?q=tease+and+denial&page=#{d +1}"
@@ -921,7 +932,9 @@ def crawl_new_wein8
         page.xpath('//*[@id="video_content"]/div/div/a').each do |line|
           
             
-        name << line['title']
+        name2 =line['title']
+        line2 =   name2[0..80].gsub(/\s\w+\s*$/,'...')
+        name << line2
         end
         
           
@@ -933,7 +946,9 @@ def crawl_new_wein8
         image_url << img
         end
          
-         prod_desc
+        page.css('.video_duration').each do |t|
+            prod_title << t.text
+        end
         
         
           
@@ -977,13 +992,121 @@ def crawl_new_wein8
         delinero_wein.image_url = image_url[i]
         delinero_wein.source_link = "http://www.pussyspace.com/#{source_link[i]}"
         delinero_wein.price = price[i]
-        delinero_wein.prod_mhd = prod_mhd[i]
+        delinero_wein.prod_title = prod_title[i]
         delinero_wein.prod_desc = prod_desc[i]
        
         delinero_wein.save
         
     end
 end
+def crawl_new_wein10
+    @xvid = Shop.find_or_initialize_by(id: 10, shop_name: "xhamster")
+    
+    
+    vintage = []
+    prod_desc = []
+    price = []
+    prod_title =[]
+    taste =[]
+    category = []
+    prod_mhd = []
+    name = []
+    source_link = []
+    image_url = []
+     #157 pages in total
+    
+   130.times do |d|
+    
+        #url ="http://de.xhamster.com/new/#{d + 1}.html"
+        url = "http://de.xhamster.com/search.php?q=tease+and+denial&qcat=video&page=#{d + 1}"
+        page = Nokogiri::HTML(open(url))
+    
+     
+        page.css('.video a').each do |line|  
+        
+            source_link << line['href']
+           
+           
+        end
+       
+        # page.xpath('//li/a/img').each do |line|
+          
+            
+        # name << line['alt']
+        # end
+        
+        
+        # page.xpath('//*/li/a/img').each do |line|
+        page.css('.video a img').each do |line|  
+          
+        img = line['src']
+      # img.gsub!(/,.*/, '')
+        image_url << img
+        end
+          page.css('.hRotator u').each do |ta|
+              line2 =   ta.text
+        name << line2
+              
+            end
+            
+         page.css('.hRotator b').each do |ta|
+                prod_title << ta.text
+            end
+            
+            
+        #vPromo > div.boxC > div:nth-child(1) > a > u
+        
+          
+    end
+    
+    #   $item_count2 = source_link.length
+   
+    # source_link.length.times do |site|
+    #     produkt_seite = Nokogiri::HTML(open("http://daftsex.com/#{source_link[site]}"))
+      
+        
+        
+    # end
+    
+    
+    
+           
+            
+      #      produkt_seite.css('div.price-box span.price').each do |ta|
+      #          category << 'Rotwein'
+         #   end
+            #Shop Logo
+            
+        #   produkt_seite.css('div.p-right-content div.price-box span.regular-price span.price').each do |preis|
+        #    price_converted = preis.text.gsub(/[[:space:]]/, "")
+        #    price3 = price_converted.sub(",",".")
+        #    price << price3.sub("EUR","")
+       ##     p "added price"
+         #   end     
+ # end
+    
+    
+    count =  source_link.length  
+        
+    count.times do |i|
+    
+        mark_video = @xvid.weins.find_or_initialize_by(source_link: source_link[i])
+        mark_video.name = name[i]
+        mark_video.image_url = image_url[i]
+        mark_video.source_link = "#{source_link[i]}"
+        mark_video.price = price[i]
+        mark_video.prod_mhd = prod_mhd[i]
+        mark_video.prod_title = prod_title[i]
+        if mark_video.image_url.include? ".gif"
+         next
+        else
+         mark_video.save
+        end
+        
+    end
+end
+
+
 
 #end of all
 end

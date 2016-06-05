@@ -3,7 +3,8 @@ class WeinsController < ApplicationController
   # GET /weins
   # GET /weins.json
   def index
-    @weins = Wein.where(["name LIKE ?","%#{params[:search]}%"]).page(params[:page]).per(42)
+   # @weins = Wein.all.page(params[:page]).per(42)
+   @weins = Wein.where(["name LIKE ?","%#{params[:search]}%"]).page(params[:page]).per(42)
      #@weins = Wein.all.order('price')
      #@weins  = Wein.all.order(:price)
      # @weins = Wein.where(["name LIKE ?","%#{params[:search]}%"]).order(price: :asc)
